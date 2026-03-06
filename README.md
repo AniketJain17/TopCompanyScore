@@ -30,4 +30,20 @@ python manage.py runserver
    companies/<int:pk>/' Get company details 
 
 
+## Indexes
+### Company Table
+- Added at industry for  fast filter by industry
+- annual_revenue for  fast scoring queries
+- is_active for  filter active companies only
+
+### CompanyScore Table
+- total_score for  fast sorting
+- rank for fast rank lookups
+
+## Optimizations
+- bulk_create with batch_size=1000 for seeding
+- select_related to avoid N+1 queries
+- DENSE_RANK() at DB level for ranking
+- DB indexes on all filtered/sorted fields
+- .only() to fetch minimal fields during scoring
    
